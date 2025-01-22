@@ -19,33 +19,35 @@ VALIDATE(){
      
 }
 echo " Script started executing at $TIMESTAMP" &>> "$LOG_FILE_NAME"
+CHECK_ROOT(){
 if [ "$USERID" -ne 0 ];then 
   echo "Error: you must have sudo privilge to install the package"
   exit 1 #other than 0
   fi
-  dnf list installed mysql   &>> "$LOG_FILE_NAME"
- if [ $? -ne 0 ] ;then
-   dnf install mysql -y &>> "$LOG_FILE_NAME"
-   VALIDATE $? "Installing MySql"
- else    
-   echo -e " mysql already $Y INSTALLED" 
-   fi
+}
+#   dnf list installed mysql   &>> "$LOG_FILE_NAME"
+#  if [ $? -ne 0 ] ;then
+#    dnf install mysql -y &>> "$LOG_FILE_NAME"
+#    VALIDATE $? "Installing MySql"
+#  else    
+#    echo -e " mysql already $Y INSTALLED" 
+#    fi
 
-   #Installing the git
-   dnf list installed git  &>> "$LOG_FILE_NAME"
-   if [ $? -ne 0 ] ;then
-   dnf install git -y &>> "$LOG_FILE_NAME" 
-   VALIDATE $? "Installing Git"
-   else 
-     echo -e "$N Git already $Y INSTALLED"   
-     fi
-
+#    #Installing the git
+#    dnf list installed git  &>> "$LOG_FILE_NAME"
+#    if [ $? -ne 0 ] ;then
+#    dnf install git -y &>> "$LOG_FILE_NAME" 
+#    VALIDATE $? "Installing Git"
+#    else 
+#      echo -e "$N Git already $Y INSTALLED"   
+#      fi
+CHECK_ROOT
      for package in $@
      do 
        dnf list installed  $package &>> "$LOG_FILE_NAME"
        if [ $? -ne 0 ]; then 
          dnf install $package -y  &>> "$LOG_FILE_NAME"
         else 
-          echo -e " $package is already $Y INSTALLED $N
+          echo -e " $package is already $Y INSTALLED $N"
         fi
         done    
