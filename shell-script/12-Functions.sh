@@ -7,7 +7,7 @@ VALIDATE(){
     else 
     echo " $2  Success"
     fi
-    else 
+     
 }
 if [ "$USERID" -ne 0 ];then 
   echo "Error: you must have sudo privilge to install the package"
@@ -23,6 +23,8 @@ if [ "$USERID" -ne 0 ];then
 
    #Installing the git
    dnf list installed git 
+   if [ $? -ne 0 ] ;then
+   dnf install git 
    VALIDATE $? "Installing Git"
     else 
      echo " Git already installed "
