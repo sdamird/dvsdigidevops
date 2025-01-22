@@ -25,29 +25,18 @@ if [ "$USERID" -ne 0 ];then
   exit 1 #other than 0
   fi
 }
-#   dnf list installed mysql   &>> "$LOG_FILE_NAME"
-#  if [ $? -ne 0 ] ;then
-#    dnf install mysql -y &>> "$LOG_FILE_NAME"
-#    VALIDATE $? "Installing MySql"
-#  else    
-#    echo -e " mysql already $Y INSTALLED" 
-#    fi
-
-#    #Installing the git
-#    dnf list installed git  &>> "$LOG_FILE_NAME"
-#    if [ $? -ne 0 ] ;then
-#    dnf install git -y &>> "$LOG_FILE_NAME" 
-#    VALIDATE $? "Installing Git"
-#    else 
-#      echo -e "$N Git already $Y INSTALLED"   
-#      fi
-CHECK_ROOT
+ CHECK_ROOT
+     
      for package in $@
      do 
        dnf list installed  $package &>> "$LOG_FILE_NAME"
-       if [ $? -ne 0 ]; then 
+       if [ $? -eq 0 ]; then
+	  echo -e "$package is alreay $Y iNSTALLED"
+       else 	  
          dnf install $package -y  &>> "$LOG_FILE_NAME"
-        else 
-          echo -e " $package is already $Y INSTALLED $N"
+	if [ $? -ne 0 ];then 
+		echo -e "$package is $R Not available  $N to install"
         fi
+       fi
         done    
+
