@@ -20,7 +20,7 @@ if [ "$USERID" -ne 0 ];then
  if [ $? -ne 0 ] ;then
    dnf install mysql -y 
    VALIDATE $? "Installing MySql"
-       
+ else    
    echo -e " mysql already $Y INSTALLED"
    fi
 
@@ -30,6 +30,6 @@ if [ "$USERID" -ne 0 ];then
    dnf install git 
    VALIDATE $? "Installing Git"
     else 
-     echo " Git already $Y installed "
+     echo -e " Git already $Y installed "
      fi
 
