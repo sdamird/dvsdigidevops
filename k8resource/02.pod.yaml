@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: myapp
-  Namespace: expense
+  namespace: expense
 spec:
   containers:
   - name: nginx
