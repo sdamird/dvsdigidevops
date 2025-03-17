@@ -30,33 +30,23 @@ spec:
         ports:
         - containerPort: 80
 ---
-kind: apiVersion: v1
-kind: Pod
+apiVersion: v1
+kind: Service
 metadata:
-  name: nginx
+  name: nginx-service
   labels:
     app: nginx
     tier: frontend
     purpose: deployment
-
 spec:
-   type: loadbalancer
-   selector:
-    matchLabels:
-      app: nginx
-      tier: frontend
-      purpose: dev  
-  containers:
-  - name: nginx
-    image: nginx
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-    ports:
-      - protocol: TCP
-        port: 80
-        targetPort: 80
-        nodePort: 30007
-        
-
+  type: loadBalancer
+  selector:
+    app: nginx
+    tier: frontend
+    purpose: deployment
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+   
+  
