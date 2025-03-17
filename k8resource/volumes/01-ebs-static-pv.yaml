@@ -8,9 +8,9 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: slow
-  csi: 
-   driver: ebs.csi.aws.com
-   fstype: xfs
-   volumeHandle: vol-05c2228461e1b98c1
+   csi: 
+    driver: ebs.csi.aws.com
+    fstype: xfs
+    volumeHandle: vol-05c2228461e1b98c1
