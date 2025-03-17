@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: nginx
       tier: frontend
-      purpose: dev
+      purpose: deployment
   template:
     metadata:
       labels:
