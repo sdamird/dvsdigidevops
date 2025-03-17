@@ -1,0 +1,16 @@
+kind: apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  csi: 
+   driver: ebs.csi.aws.com
+   fstype: xfs
+   volumeHandle: vol-05c2228461e1b98c1
