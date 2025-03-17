@@ -11,7 +11,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: mysql
       tier: mysql
       project: expense
   template:
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  Namespace: expense
+  namespace: expense
 spec:
   selector: #labels are used to select the pods
     app: mysql
