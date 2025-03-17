@@ -1,0 +1,31 @@
+kind: apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector: #labesl are used to select the pods
+    project: expense
+    component: backend
+    environment: dev
+    version: 1.0.0
+  ports:
+     - port: 80
+       protocol: TCP
+    targetPort: 80
+
+    ----------
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: backend-np
+      labels:
+        project: expense
+        component: backend
+        environment: dev
+        version: 1.0.0
+        demo: np
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        
