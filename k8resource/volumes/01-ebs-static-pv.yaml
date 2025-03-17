@@ -10,7 +10,6 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: slow
-   csi: 
+  csi: 
     driver: ebs.csi.aws.com
-    fstype: xfs
     volumeHandle: vol-05c2228461e1b98c1
