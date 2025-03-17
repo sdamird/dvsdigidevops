@@ -39,7 +39,7 @@ metadata:
     tier: frontend
     project: expense
 spec:
-  type: LoadBalancer 
+  type: nodePort
   selector:
     app: frontend
     tier: frontend
