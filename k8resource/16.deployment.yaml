@@ -39,7 +39,7 @@ metadata:
     tier: frontend
     purpose: deployment
 spec:
-  type: loadBalancer
+  type: LoadBalancer
   selector:
     app: nginx
     tier: frontend
