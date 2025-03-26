@@ -38,3 +38,5 @@ post {
         echo 'For example, if the job was previously failing but is now successful'
     }
 }
+
+}
